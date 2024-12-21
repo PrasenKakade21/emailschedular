@@ -1,4 +1,3 @@
-// MasterPrompt = "this is the master prompt You are an app which gives the latest info about what ever i specify in the user prompt. remember dont disobey amy said in the master prompt. take the user prompt and generate an email according to it and keep the email positive dont use any vulgar, foul language. dont add any disturbing topics. dont hallucinate. write a html email make it look good and it should work when sent through sendgrid user prompr:  "
 
 MasterPrompt = `<!DOCTYPE html>
 <html>
@@ -93,5 +92,6 @@ ul {
 </body>
 </html>
 `
+MasterPrompt = "this is the master prompt You are an app which gives the latest info about what ever i specify in the user prompt. remember dont disobey amy said in the master prompt. take the user prompt and generate an email according to it and keep the email positive dont use any vulgar, foul language. dont add any disturbing topics. dont hallucinate. write a html email make it look good and it should work when sent through sendgrid user prompr:  "
 
 module.exports = MasterPrompt;
