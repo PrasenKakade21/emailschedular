@@ -1,0 +1,52 @@
+<div class="bg-white shadow rounded-lg p-6">
+    <div class="flex justify-between items-center">
+        <h2 class="text-lg font-bold text-gray-700">Email Scheduler</h2>
+        <div class="flex items-center space-x-4">
+            <!-- Server Time -->
+            <!-- <div class="text-sm text-gray-600">
+                Server Time: <%= new Date().toLocaleTimeString() %>
+            </div> -->
+            <!-- Status -->
+            <div class="flex items-center space-x-2">
+                <span class="inline-block w-2 h-2 rounded-full <%= isRunning ? 'bg-green-500' : 'bg-red-500' %>"></span>
+                <p class="text-sm">
+                    <span class="<%= isRunning ? 'text-green-600' : 'text-red-600' %> font-semibold">
+                        <%= isRunning ? 'Running' : 'Stopped' %>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <% if (locals.lastUpdated) { %>
+        <div class="mt-2 text-sm text-gray-500">
+            Last Updated: <%= new Date(lastUpdated).toLocaleTimeString() %>
+        </div>
+    <% } %>
+
+    <div class="mt-4 flex justify-end space-x-2">
+        <% if (!isRunning) { %>
+            <form action="/scheduler/start" method="POST">
+                <button type="submit" 
+                        class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors duration-200 flex items-center">
+                    <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Start
+                </button>
+            </form>
+        <% } else { %>
+            <form action="/scheduler/stop" method="POST">
+                <button type="submit" 
+                        class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors duration-200 flex items-center">
+                    <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="6" y="4" width="4" height="16"></rect>
+                        <rect x="14" y="4" width="4" height="16"></rect>
+                    </svg>
+                    Stop
+                </button>
+            </form>
+        <% } %>
+    </div>
+</div>
+
